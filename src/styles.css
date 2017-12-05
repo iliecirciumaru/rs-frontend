@@ -23,3 +23,17 @@ input.ng-valid {
 input.ng-invalid:not(.ng-pristine) {
     border: 1px solid red;
 }
+
+.rs-menu {
+    padding: 10px 20px;
+    background-color: #ffdf96;
+}
+
+.rs-menu .btn {
+    padding: 4px 20px;
+    float: right;
+    position: relative;
+    bottom: 5px;
+    cursor: pointer;
+}
+
