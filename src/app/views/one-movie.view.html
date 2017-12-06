@@ -1,0 +1,22 @@
+<div class="one-movie">
+    <div *ngIf="movie != null" class="main-movie">
+        <img src="{{movie.poster_image_url}}" alt="" class="poster">
+        <p class="movie-title">{{movie.title}}</p>
+        <p [innerHTML]="movie.average_rating | rsrating" class="rating"></p>
+        <p class="movie-genres">{{movie.info}}</p>
+    </div>
+
+    <div *ngIf="similarMovies != null" class="similar-movies">
+        <h2>Similar movies</h2>
+        <div class="movie-group">
+            <div *ngFor="let movie of similarMovies" class="movie-group-item">
+                <a routerLink="/movies/{{movie.id}}">
+                    <img src="{{movie.poster_image_url}}" alt="" class="poster">
+                    <p class="movie-title">{{movie.title}}</p>
+                </a>
+                <p [innerHTML]="movie.average_rating | rsrating" class="rating"></p>
+                <p class="movie-genres">{{movie.info}}</p>
+            </div>
+        </div>
+    </div>
+</div>
