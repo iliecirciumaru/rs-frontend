@@ -1,17 +1,26 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { User } from '../classes/user';
-import { UserService } from '../services/user.service';
+import { MovieService } from '../services/movie.service';
+import { Movie } from '../classes/movie';
 
 @Component({
     selector: 'rs-main-page',
-    template: `
-    <div>Welcome to main page</div>
-    `
+    templateUrl: './main-page.view.html'
 })
-export class MainPageComponent {
-    @Input('user') user: User;
+export class MainPageComponent implements OnInit{
+    topRatedMovies: Movie[] = null;
+    // @Input('user') user: User;
 
-    constructor(private userService: UserService) {
+    constructor(private movieService: MovieService) {
 
+    }
+
+    ngOnInit(): void {
+        this.movieService.getTopMovies().then(data => {
+            console.log("Succesffuly fetched top movies: ", data);
+            this.topRatedMovies = data as Movie[];
+        }).catch(error => {
+            console.log("ERROR: ", error);
+        });
     }
 }

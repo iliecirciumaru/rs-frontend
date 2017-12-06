@@ -9,9 +9,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { RegisterComponent } from './components/register.component';
 import { MenuComponent } from './components/menu.component';
 import { UserService } from './services/user.service';
+import { MovieService } from './services/movie.service';
 import { LoginComponent } from './components/login.component';
 import { RsHttpInterceptor } from './services/interceptor/http.interceptor';
 import { MainPageComponent } from './views/main-page.view';
+import { RatingPipe } from './pipe/rating.pipe';
+import { SafeHtmlPipe } from './pipe/safe-html.pipe';
 
 
 @NgModule({
@@ -22,9 +25,10 @@ import { MainPageComponent } from './views/main-page.view';
     HttpClientModule,
   ],
   declarations: [
-    AppComponent, RegisterComponent, LoginComponent, MenuComponent, MainPageComponent
+    AppComponent, RegisterComponent, LoginComponent, MenuComponent, MainPageComponent,
+    RatingPipe, SafeHtmlPipe,
   ],
-  providers: [UserService, { provide: HTTP_INTERCEPTORS, useClass: RsHttpInterceptor, multi: true }],
+  providers: [UserService, MovieService, { provide: HTTP_INTERCEPTORS, useClass: RsHttpInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

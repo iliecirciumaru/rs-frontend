@@ -15,7 +15,6 @@
     font-size: 26px;
 }
 
-
 input.ng-valid {
     border: 1px solid green;
 }
@@ -37,3 +36,48 @@ input.ng-invalid:not(.ng-pristine) {
     cursor: pointer;
 }
 
+
+.rs-main-page {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 30px 10px;
+}
+
+.rs-main-page .section {
+    margin-bottom: 50px;
+}
+
+.top-rated-movies {
+    display: flex;
+    justify-content: space-between;
+}
+
+.top-rated-movies .top-rated-movie {
+    width: 18%;
+    margin: auto;
+}
+
+.top-rated-movies img.poster {
+    max-width: 100%;
+    height: 280px;
+    width: auto;
+    margin-bottom: 5px;
+}
+
+.top-rated-movies .top-rated-movie a {
+    font-weight: bold;
+    font-style: italic;
+    color: black;
+}
+
+.top-rated-movies .top-rated-movie .movie-title, .top-rated-movies .top-rated-movie .movie-genres {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 0;
+}
+
+.rating img {
+    width: 16px;
+    height: 16px;
+}
