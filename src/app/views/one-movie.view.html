@@ -4,6 +4,16 @@
         <p class="movie-title">{{movie.title}}</p>
         <p [innerHTML]="movie.average_rating | rsrating" class="rating"></p>
         <p class="movie-genres">{{movie.info}}</p>
+
+        <div class="rate-movie" *ngIf="!movie.user_rating">
+            <input type="number" name="" id="" min="0" max="5" [(ngModel)]="userMovieRating">
+            <button (click)="rateMovie()" class="btn btn-primary">Submit</button>
+        </div>
+
+        <div class="rate-movie" *ngIf="movie.user_rating">
+            Your rating: {{movie.user_rating}}
+        </div>
+
     </div>
 
     <div *ngIf="similarMovies != null" class="similar-movies">

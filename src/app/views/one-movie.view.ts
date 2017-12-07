@@ -12,6 +12,7 @@ export class OneMovieComponent implements OnInit {
     // topRatedMovies: Movie[] = null;
     movie: Movie = null;
     similarMovies: Movie[];
+    userMovieRating: number = 3;
 
     constructor(
         private movieService: MovieService,
@@ -45,6 +46,15 @@ export class OneMovieComponent implements OnInit {
             this.similarMovies = data as Movie[];
         }).catch(error => {
             console.log("ERROR: ", error);
+        });
+    }
+
+    rateMovie() {
+        console.log(`Mare request to put rating ${this.userMovieRating} on movie ${this.movie.id} `);
+        this.movieService.rateMovie(this.movie.id, this.userMovieRating).then(data => {
+            console.log('Successful request: ', data);
+        }).catch(error => {
+            console.log('Error occured: ', error);
         });
     }
 }

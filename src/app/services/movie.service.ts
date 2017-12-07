@@ -28,4 +28,13 @@ export class MovieService {
         return null;
     }
 
+    rateMovie(movieID: number, rating: number): Promise<any> {
+        var requestBody = {
+            movie_id: movieID,
+            rating: rating
+        }
+
+        return this.http.post(API_HOST + '/rating', requestBody).toPromise();
+    }
+
 }
