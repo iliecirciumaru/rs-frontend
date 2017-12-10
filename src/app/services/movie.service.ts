@@ -13,15 +13,15 @@ export class MovieService {
     }
 
     getTopMovies(): Promise<any>  {
-        return this.http.get(API_HOST + '/top?limit=5').toPromise();
+        return this.http.get(API_HOST + '/movies/top?number=5').toPromise();
     }
 
     getUserRecommendedMovies(): Promise<any>  {
-        return null;
+        return this.http.get(API_HOST + '/movies/recommended?number=5').toPromise();
     }
 
     getRecentReleases(): Promise<any>  {
-        return null;
+        return this.http.get(API_HOST + '/movies/recent?number=5').toPromise();
     }
 
     getContextRecommendation(): Promise<any>  {

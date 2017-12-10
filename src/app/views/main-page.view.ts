@@ -9,6 +9,8 @@ import { Movie } from '../classes/movie';
 })
 export class MainPageComponent implements OnInit{
     topRatedMovies: Movie[] = null;
+    recommendedMovies: Movie[] = null;
+    recenteMovies: Movie[] = null;
     // @Input('user') user: User;
 
     constructor(private movieService: MovieService) {
@@ -16,9 +18,24 @@ export class MainPageComponent implements OnInit{
     }
 
     ngOnInit(): void {
+        this.movieService.getUserRecommendedMovies().then(data => {
+            console.log("Succesffuly fetched recommended movies: ", data);
+            this.recommendedMovies = data as Movie[];
+        }).catch(error => {
+            console.log("ERROR: ", error);
+        });
+
+
         this.movieService.getTopMovies().then(data => {
             console.log("Succesffuly fetched top movies: ", data);
             this.topRatedMovies = data as Movie[];
+        }).catch(error => {
+            console.log("ERROR: ", error);
+        });
+
+        this.movieService.getRecentReleases().then(data => {
+            console.log("Succesffuly fetched recent movies: ", data);
+            this.recenteMovies = data as Movie[];
         }).catch(error => {
             console.log("ERROR: ", error);
         });

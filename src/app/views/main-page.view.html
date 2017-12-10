@@ -1,20 +1,22 @@
 <div class="rs-main-page">
 
-    <div *ngIf="topRatedMovies != null" class="section">
+    <div *ngIf="recommendedMovies != null && recommendedMovies.length != 0" class="section">
         <h2 class="subtitle">Recommended For You</h2>
         <div class="movie-group">
-            <div *ngFor="let movie of topRatedMovies" class="movie-group-item">
+            <div *ngFor="let movie of recommendedMovies" class="movie-group-item">
                 <a routerLink="/movies/{{movie.id}}">
                     <img src="{{movie.poster_image_url}}" alt="" class="poster">
                     <p class="movie-title">{{movie.title}}</p>
                 </a>
-                <p [innerHTML]="movie.average_rating | rsrating" class="rating"></p>
+               
+                <p [innerHTML]="movie.user_rating | rsrating" class="rating" title="Predicted: {{movie.user_rating}}"></p>
+                
                 <p class="movie-genres">{{movie.info}}</p>
             </div>
         </div>
     </div>
 
-    <div *ngIf="topRatedMovies != null" class="section">
+    <div *ngIf="topRatedMovies != null && topRatedMovies.length != 0" class="section">
         <h2 class="subtitle">Top Rated Movies</h2>
         <div class="movie-group">
             <div *ngFor="let movie of topRatedMovies" class="movie-group-item">
@@ -28,10 +30,10 @@
         </div>
     </div>
 
-    <div *ngIf="topRatedMovies != null" class="section">
+    <div *ngIf="recenteMovies != null && recenteMovies.length != 0" class="section">
         <h2 class="subtitle">Recent Releases</h2>
         <div class="movie-group">
-            <div *ngFor="let movie of topRatedMovies" class="movie-group-item">
+            <div *ngFor="let movie of recenteMovies" class="movie-group-item">
                 <a routerLink="/movies/{{movie.id}}">
                     <img src="{{movie.poster_image_url}}" alt="" class="poster">
                     <p class="movie-title">{{movie.title}}</p>

@@ -5,4 +5,5 @@ export class Movie {
     average_rating: number;
     poster_image_url: string;
     user_rating: number;
+    rated: boolean;
 }
