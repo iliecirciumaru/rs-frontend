@@ -89,6 +89,14 @@ input.ng-invalid:not(.ng-pristine) {
     overflow: hidden;
 }
 
+
+.one-movie .rate-movie input {
+    border-radius: 5px;
+    padding: 5px;
+    text-align: right;
+    border: 1px solid #c1c1c1;
+}
+
 .main-movie .poster {
     float: left;
     margin-right: 40px;

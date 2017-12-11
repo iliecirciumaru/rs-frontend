@@ -10,10 +10,9 @@ import 'rxjs/add/operator/switchMap';
     templateUrl: './one-movie.view.html'
 })
 export class OneMovieComponent implements OnInit {
-    // topRatedMovies: Movie[] = null;
     movie: Movie = null;
     similarMovies: Movie[];
-    userMovieRating: number = 3;
+    userMovieRating: number;
 
     constructor(
         private movieService: MovieService,
@@ -23,15 +22,6 @@ export class OneMovieComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        // let id = this.route.snapshot.paramMap.get('id');
-
-        // this.movieService.getMovieByID(+id).then(data => {
-        //     console.log("Succesfully fetched one movie", data);
-        //     this.movie = data as Movie;
-        // }).catch(error => {
-        //     console.log("Error during fetching one movie", error);
-        // });
-
         this.route.paramMap
             .switchMap((params: ParamMap) => {
                 return this.movieService.getMovieByID(+params.get('id')).then(data => {
@@ -58,6 +48,7 @@ export class OneMovieComponent implements OnInit {
         console.log(`Mare request to put rating ${this.userMovieRating} on movie ${this.movie.id} `);
         this.movieService.rateMovie(this.movie.id, this.userMovieRating).then(data => {
             console.log('Successful request: ', data);
+            this.movie.user_rating = this.userMovieRating;
         }).catch(error => {
             console.log('Error occured: ', error);
         });

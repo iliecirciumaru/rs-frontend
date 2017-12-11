@@ -9,9 +9,9 @@
                     <p class="movie-title">{{movie.title}}</p>
                 </a>
                
-                <p [innerHTML]="movie.user_rating | rsrating" class="rating" title="Predicted: {{movie.user_rating}}"></p>
+                <p [innerHTML]="movie.user_rating | rating | starsrating" class="rating" title="Predicted: {{movie.user_rating | rating}}"></p>
                 
-                <p class="movie-genres">{{movie.info}}</p>
+                <p class="movie-genres">{{movie.info | info}}</p>
             </div>
         </div>
     </div>
@@ -24,8 +24,8 @@
                     <img src="{{movie.poster_image_url}}" alt="" class="poster">
                     <p class="movie-title">{{movie.title}}</p>
                 </a>
-                <p [innerHTML]="movie.average_rating | rsrating" class="rating"></p>
-                <p class="movie-genres">{{movie.info}}</p>
+                <p [innerHTML]="movie.average_rating | rating | starsrating" class="rating" title="Average rating: {{movie.average_rating | rating}}"></p>
+                <p class="movie-genres">{{movie.info | info}}</p>
             </div>
         </div>
     </div>
@@ -38,8 +38,8 @@
                     <img src="{{movie.poster_image_url}}" alt="" class="poster">
                     <p class="movie-title">{{movie.title}}</p>
                 </a>
-                <p [innerHTML]="movie.average_rating | rsrating" class="rating"></p>
-                <p class="movie-genres">{{movie.info}}</p>
+                <p [innerHTML]="movie.average_rating | rating | starsrating" class="rating" title="Average rating: {{movie.average_rating | rating}}"></p>
+                <p class="movie-genres">{{movie.info | info}}</p>
             </div>
         </div>
     </div>

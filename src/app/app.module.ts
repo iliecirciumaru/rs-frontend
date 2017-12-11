@@ -15,7 +15,9 @@ import { RsHttpInterceptor } from './services/interceptor/http.interceptor';
 import { MainPageComponent } from './views/main-page.view';
 import { OneMovieComponent } from './views/one-movie.view';
 import { RatingPipe } from './pipe/rating.pipe';
+import { InfoPipe } from './pipe/info.pipe';
 import { SafeHtmlPipe } from './pipe/safe-html.pipe';
+import { StarsRatingPipe } from './pipe/stars-rating.pipe';
 
 
 @NgModule({
@@ -27,7 +29,7 @@ import { SafeHtmlPipe } from './pipe/safe-html.pipe';
   ],
   declarations: [
     AppComponent, RegisterComponent, LoginComponent, MenuComponent, MainPageComponent,
-    RatingPipe, SafeHtmlPipe, OneMovieComponent,
+    RatingPipe, SafeHtmlPipe, OneMovieComponent, InfoPipe, StarsRatingPipe,
   ],
   providers: [UserService, MovieService, { provide: HTTP_INTERCEPTORS, useClass: RsHttpInterceptor, multi: true }],
   bootstrap: [AppComponent]
