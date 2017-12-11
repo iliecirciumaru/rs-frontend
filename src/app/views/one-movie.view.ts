@@ -3,6 +3,7 @@ import { User } from '../classes/user';
 import { MovieService } from '../services/movie.service';
 import { Movie } from '../classes/movie';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import 'rxjs/add/operator/switchMap';
 
 @Component({
     selector: 'one-movie',
@@ -22,31 +23,35 @@ export class OneMovieComponent implements OnInit {
     }
 
     ngOnInit(): void {
-        let id = this.route.snapshot.paramMap.get('id');
+        // let id = this.route.snapshot.paramMap.get('id');
 
-        this.movieService.getMovieByID(+id).then(data => {
-            console.log("Succesfully fetched one movie", data);
-            this.movie = data as Movie;
-        }).catch(error => {
-            console.log("Error during fetching one movie", error);
-        });
+        // this.movieService.getMovieByID(+id).then(data => {
+        //     console.log("Succesfully fetched one movie", data);
+        //     this.movie = data as Movie;
+        // }).catch(error => {
+        //     console.log("Error during fetching one movie", error);
+        // });
 
-        // this.route.paramMap
-        //     .switchMap((params: ParamMap) =>
-        //         this.movieService.getMovieByID(+params.get('id')).then(data => {
-        //             console.log("Succesfully fetched one movie", data);
-        //             this.movie = data as Movie;
-        //         }).catch(error => {
-        //             console.log("Error during fetching one movie", error);
-        //         }));
+        this.route.paramMap
+            .switchMap((params: ParamMap) => {
+                return this.movieService.getMovieByID(+params.get('id')).then(data => {
+                    console.log("Succesfully fetched one movie", data);
+                    this.movie = data as Movie;
+                }).catch(error => {
+                    console.log("Error during fetching one movie", error);
+                })
+            }).subscribe();
 
-        // TODO change to similar movies
-        this.movieService.getTopMovies().then(data => {
-            console.log("Succesffuly fetched similar movies: ", data);
-            this.similarMovies = data as Movie[];
-        }).catch(error => {
-            console.log("ERROR: ", error);
-        });
+
+        this.route.paramMap
+            .switchMap((params: ParamMap) => {
+                return this.movieService.getSimilarMovies(+params.get('id')).then(data => {
+                    console.log("Succesffuly fetched similar movies: ", data);
+                    this.similarMovies = data as Movie[];
+                }).catch(error => {
+                    console.log("ERROR: ", error);
+                })
+            }).subscribe();
     }
 
     rateMovie() {

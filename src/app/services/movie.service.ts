@@ -24,8 +24,8 @@ export class MovieService {
         return this.http.get(API_HOST + '/movies/recent?number=5').toPromise();
     }
 
-    getContextRecommendation(): Promise<any>  {
-        return null;
+    getSimilarMovies(movieID: number): Promise<any>  {
+        return this.http.get(`${API_HOST}/movie/${movieID}/similar?number=5`).toPromise();
     }
 
     rateMovie(movieID: number, rating: number): Promise<any> {
