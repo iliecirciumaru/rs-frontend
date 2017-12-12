@@ -4,6 +4,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class InfoPipe implements PipeTransform {
   transform(value: string): string {
      if (value == null || value == "") return null;
-     return value.replace("|",",");
+     return value.replace(/\|/g,", ");
   }
 }

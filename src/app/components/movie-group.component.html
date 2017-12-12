@@ -1,0 +1,16 @@
+<div *ngIf="movies != null && movies.length != 0">
+    <h2 class="subtitle" *ngIf="subtitle">{{subtitle}}</h2>
+    <div class="movie-group">
+        <div *ngFor="let movie of movies" class="movie-group-item">
+            <a routerLink="/movies/{{movie.id}}">
+                <img src="{{movie.poster_image_url}}" alt="" class="poster">
+                <p class="movie-title">{{movie.title}}</p>
+            </a>
+
+            <p [innerHTML]="movie.user_rating | rating | starsrating" class="rating" 
+            title="Predicted: {{movie.user_rating | rating}}"></p>
+
+            <p class="movie-genres">{{movie.info | info}}</p>
+        </div>
+    </div>
+</div>

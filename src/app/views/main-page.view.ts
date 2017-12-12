@@ -11,6 +11,9 @@ export class MainPageComponent implements OnInit{
     topRatedMovies: Movie[] = null;
     recommendedMovies: Movie[] = null;
     recenteMovies: Movie[] = null;
+    foundMovies: Movie[] = null;
+    searchPrefix:string;
+    searchDone: boolean;
     // @Input('user') user: User;
 
     constructor(private movieService: MovieService) {
@@ -36,6 +39,22 @@ export class MainPageComponent implements OnInit{
         this.movieService.getRecentReleases().then(data => {
             console.log("Succesffuly fetched recent movies: ", data);
             this.recenteMovies = data as Movie[];
+        }).catch(error => {
+            console.log("ERROR: ", error);
+        });
+    }
+
+    searchMovie() {
+        console.log("Start search...prefix: ", this.searchPrefix);
+        this.movieService.searchMovie(this.searchPrefix).then(data => {
+            console.log("Succesffuly searched movies: ", data);
+            const movies = data as Movie[];
+            if (movies.length) {
+                this.foundMovies = movies;
+            } else {
+                this.foundMovies = null;
+            }
+            this.searchDone = true;
         }).catch(error => {
             console.log("ERROR: ", error);
         });

@@ -37,4 +37,8 @@ export class MovieService {
         return this.http.post(API_HOST + '/rating', requestBody).toPromise();
     }
 
+    searchMovie(prefix: string): Promise<any> {
+        return this.http.get(`${API_HOST}/movies/search?prefix=${prefix}`).toPromise();
+    }
+
 }

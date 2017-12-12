@@ -1,49 +1,30 @@
 <div class="rs-main-page">
+    <h2 class="subtitle">Search movie</h2>
+    <div class="search-movies">
+        <input type="text" [(ngModel)]="searchPrefix" class="form-control" required>
+        <button (click)="searchMovie()" class="btn btn-primary">Submit</button>
+    </div>
+   
+    <div *ngIf="searchDone">
+        <div *ngIf="foundMovies">
+            <rs-movie-group [movies]="foundMovies"></rs-movie-group>
+        </div>
+
+        <div class="alert alert-warning" role="alert" *ngIf="!foundMovies">
+            <strong>Sorry!</strong> nothing was found, please try again.
+        </div>
+    </div>
+
 
     <div *ngIf="recommendedMovies != null && recommendedMovies.length != 0" class="section">
-        <h2 class="subtitle">Recommended For You</h2>
-        <div class="movie-group">
-            <div *ngFor="let movie of recommendedMovies" class="movie-group-item">
-                <a routerLink="/movies/{{movie.id}}">
-                    <img src="{{movie.poster_image_url}}" alt="" class="poster">
-                    <p class="movie-title">{{movie.title}}</p>
-                </a>
-               
-                <p [innerHTML]="movie.user_rating | rating | starsrating" class="rating" title="Predicted: {{movie.user_rating | rating}}"></p>
-                
-                <p class="movie-genres">{{movie.info | info}}</p>
-            </div>
-        </div>
+        <rs-movie-group [movies]="recommendedMovies" [subtitle]="'Recommended For You'"></rs-movie-group>
     </div>
 
     <div *ngIf="topRatedMovies != null && topRatedMovies.length != 0" class="section">
-        <h2 class="subtitle">Top Rated Movies</h2>
-        <div class="movie-group">
-            <div *ngFor="let movie of topRatedMovies" class="movie-group-item">
-                <a routerLink="/movies/{{movie.id}}">
-                    <img src="{{movie.poster_image_url}}" alt="" class="poster">
-                    <p class="movie-title">{{movie.title}}</p>
-                </a>
-                <p [innerHTML]="movie.average_rating | rating | starsrating" class="rating" title="Average rating: {{movie.average_rating | rating}}"></p>
-                <p class="movie-genres">{{movie.info | info}}</p>
-            </div>
-        </div>
+        <rs-movie-group [movies]="topRatedMovies" [subtitle]="'Top Rated Movies'"></rs-movie-group>
     </div>
 
     <div *ngIf="recenteMovies != null && recenteMovies.length != 0" class="section">
-        <h2 class="subtitle">Recent Releases</h2>
-        <div class="movie-group">
-            <div *ngFor="let movie of recenteMovies" class="movie-group-item">
-                <a routerLink="/movies/{{movie.id}}">
-                    <img src="{{movie.poster_image_url}}" alt="" class="poster">
-                    <p class="movie-title">{{movie.title}}</p>
-                </a>
-                <p [innerHTML]="movie.average_rating | rating | starsrating" class="rating" title="Average rating: {{movie.average_rating | rating}}"></p>
-                <p class="movie-genres">{{movie.info | info}}</p>
-            </div>
-        </div>
+        <rs-movie-group [movies]="recenteMovies" [subtitle]="'Recent Releases'"></rs-movie-group>
     </div>
-
-
-
 </div>

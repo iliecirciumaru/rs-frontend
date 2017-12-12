@@ -106,3 +106,13 @@ input.ng-invalid:not(.ng-pristine) {
     font-size: 30px;
     font-weight: bold;
 }
+
+
+.search-movies {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.search-movies input {
+    margin-right: 5px;
+}

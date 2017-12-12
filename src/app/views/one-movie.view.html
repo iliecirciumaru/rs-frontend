@@ -2,7 +2,8 @@
     <div *ngIf="movie != null" class="main-movie">
         <img src="{{movie.poster_image_url}}" alt="" class="poster">
         <p class="movie-title">{{movie.title}}</p>
-        <p [innerHTML]="movie.average_rating | rating | starsrating" class="rating" title="Average rating: {{movie.average_rating | rating}}"></p>
+        <p [innerHTML]="movie.average_rating | rating | starsrating" class="rating" 
+        title="Average rating: {{movie.average_rating | rating}}"></p>
         <p class="movie-genres">Genre: {{movie.info | info}}</p>
 
         <div class="rate-movie" *ngIf="!movie.user_rating">
@@ -15,7 +16,6 @@
         <div class="rate-movie" *ngIf="movie.user_rating">
             Your rating: {{movie.user_rating}}
         </div>
-
     </div>
 
     <div *ngIf="similarMovies != null" class="similar-movies">
@@ -26,7 +26,8 @@
                     <img src="{{movie.poster_image_url}}" alt="" class="poster">
                     <p class="movie-title">{{movie.title}}</p>
                 </a>
-                <p [innerHTML]="movie.average_rating | rating | starsrating" class="rating" title="Average rating: {{movie.average_rating | rating}}"></p>
+                <p [innerHTML]="movie.average_rating | rating | starsrating" class="rating" 
+                title="Average rating: {{movie.average_rating | rating}}"></p>
                 <p class="movie-genres" title="{{movie.info | info}}">{{movie.info | info}}</p>
             </div>
         </div>
