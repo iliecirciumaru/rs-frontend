@@ -3,7 +3,12 @@
         {{notif.message}}
     </div>
 
-    <h2 class="header">Sign in Movie RS</h2>
+    <h2 class="header">
+        Sign in Movie RS
+        <a class="btn btn-primary login-register-link" routerLink="/register">
+            Register
+        </a>
+    </h2>
     <form #registerForm="ngForm">
         <div class="form-group">
             <label for="login">Login</label>

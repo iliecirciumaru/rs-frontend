@@ -7,8 +7,11 @@
                 <p class="movie-title">{{movie.title}}</p>
             </a>
 
-            <p [innerHTML]="movie.user_rating | rating | starsrating" class="rating" 
+            <p *ngIf="movie.user_rating" [innerHTML]="movie.user_rating | rating | starsrating" class="rating" 
             title="Predicted: {{movie.user_rating | rating}}"></p>
+
+            <p *ngIf="movie.average_rating"  [innerHTML]="movie.average_rating | rating | starsrating" class="rating" 
+            title="Predicted: {{movie.average_rating | rating}}"></p>
 
             <p class="movie-genres">{{movie.info | info}}</p>
         </div>

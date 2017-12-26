@@ -54,7 +54,7 @@ input.ng-invalid:not(.ng-pristine) {
 
 .movie-group .movie-group-item {
     width: 18%;
-    margin: auto;
+    margin: 0 auto;
 }
 
 .movie-group img.poster {
