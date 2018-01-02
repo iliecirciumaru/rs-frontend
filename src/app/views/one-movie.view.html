@@ -19,7 +19,7 @@
     </div>
 
     <div *ngIf="similarMovies != null" class="similar-movies">
-        <h2>Similar movies</h2>
+        <h2>People also watched</h2>
         <div class="movie-group">
             <div *ngFor="let movie of similarMovies" class="movie-group-item">
                 <a routerLink="/movies/{{movie.id}}">
